@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="sort.js"></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1><center>Sorting App</center></h1>
+    <br/>
+
+    <input type="button" value="Show Bar Chart" onclick="showBar()">
+    <input type="button" value="Show Polar Area Chart" onclick="showPolar()">
+
+    <canvas id="myChart" width="300" height="100"></canvas>
+    <script>
+        var ctx=document.getElementById('myChart').getContext('2d');
+        var myChart=new Chart(ctx,{
+            type:'bar',
+            data:{
+                labels:['Element 1','Element 2','Element 3','Element 4','Element 5',
+                'Element 6','Element 7','Element 8','Element 9','Element 10',
+                'Element 11','Element 12','Element 13','Element 14','Element 15',
+                'Element 16','Element 17','Element 18','Element 19','Element 20',
+                'Element 21','Element 22','Element 23','Element 24','Element 25',
+                'Element 26','Element 27','Element 28','Element 29','Element 30',
+                'Element 31','Element 32','Element 33','Element 34','Element 35',
+                'Element 36','Element 37','Element 38','Element 39','Element 40',],
+                datasets:[{
+                    data:array,
+                    backgroundColor:"rgba(111,99,236,0.5)",
+                    borderWidth: 2
+                }]
+            },
+            options:{
+                legend:{
+                    dispaly: false,
+                }
+            },
+        });
+
+        function sortArray(){
+            myChart.data.datasets[0].data=sortedArray;
+            myChart.update();
+        }
+
+        function resetArray(){
+            generateArray();
+            bubbleSort(array);
+            myChart.data.datasets[0].data=array;
+            myChart.update();
+        }
+
+        function showBar(){
+            myChart.destroy();
+            myChart=new Chart(ctx,{
+                type:'bar',
+                data:{
+                    labels:['Element 1','Element 2','Element 3','Element 4','Element 5',
+                    'Element 6','Element 7','Element 8','Element 9','Element 10',
+                    'Element 11','Element 12','Element 13','Element 14','Element 15',
+                    'Element 16','Element 17','Element 18','Element 19','Element 20',
+                    'Element 21','Element 22','Element 23','Element 24','Element 25',
+                    'Element 26','Element 27','Element 28','Element 29','Element 30',
+                    'Element 31','Element 32','Element 33','Element 34','Element 35',
+                    'Element 36','Element 37','Element 38','Element 39','Element 40',],
+                    datasets:[{
+                        data:array,
+                        backgroundColor:"rgba(111,99,236,0.5)",
+                        borderWidth: 2
+                    }]
+                },
+                options:{
+                    legend:{
+                        dispaly: false,
+                    }
+                },
+            });
+        }
+        function showPolar(){
+            myChart.destroy();
+            myChart=new Chart(ctx,{
+                type:'polarArea',
+                data:{
+                    labels:['Element 1','Element 2','Element 3','Element 4','Element 5',
+                    'Element 6','Element 7','Element 8','Element 9','Element 10',
+                    'Element 11','Element 12','Element 13','Element 14','Element 15',
+                    'Element 16','Element 17','Element 18','Element 19','Element 20',
+                    'Element 21','Element 22','Element 23','Element 24','Element 25',
+                    'Element 26','Element 27','Element 28','Element 29','Element 30',
+                    'Element 31','Element 32','Element 33','Element 34','Element 35',
+                    'Element 36','Element 37','Element 38','Element 39','Element 40',],
+                    datasets:[{
+                        data:array,
+                        backgroundColor:"rgba(111,99,236,0.5)",
+                        borderWidth: 2
+                    }]
+                },
+                options:{
+                    legend:{
+                        dispaly: false,
+                    }
+                },
+            });
+        }
+    </script>
+    <input type="button" value="Sort Array" onclick="sortArray()">
+    <input type="button" value="ReGenerate Array" onclick="resetArray()">
+</body>
+</html>

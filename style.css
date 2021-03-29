@@ -1,0 +1,10 @@
+body{
+
+    font-family: sans-serif;
+}
+#container{
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+
+}
